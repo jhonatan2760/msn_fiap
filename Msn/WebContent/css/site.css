@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+.caixaMensagens{
+	height: 500px;
+    background: whitesmoke;
+    border-radius: 4%;
+    box-shadow: black 10px 10px 30px -5px;
+    margin-bottom: 15px;
+}
+
+.caixaMensagens{
+	overflow-x : scroll;
+    background-image: url('../img/img.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-y: 241px;
+}
+
+.btnEnviar{
+	background: green;
+    width: 10%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    float : right;
+}
+
+.msg{
+	    background: rgb(201, 255, 195);
+    width: 25%;
+    border-radius: 5%;
+    padding: 10px;
+    /* height: 58px; */
+    margin-top: 19px;
+    margin-left: 15px;
+}
