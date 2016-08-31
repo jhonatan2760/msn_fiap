@@ -34,4 +34,18 @@
     /* height: 58px; */
     margin-top: 19px;
     margin-left: 15px;
+    background : url('../img/mini.png');
+    background-repeat: no-repeat;
+}
+
+.msgbody p{
+	background-color: rgb(86, 196, 239);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.calendar{
+	background: rgb(164, 217, 234);
+    padding: 7px;
+    border-radius: 8px;
 }

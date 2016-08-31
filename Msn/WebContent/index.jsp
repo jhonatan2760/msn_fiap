@@ -30,7 +30,7 @@
 	jQuery.getJSON('Send', {} , function(data){
 		jQuery.each(data, function(index, value){
 			console.log(value.mensagem);
-			jQuery('.caixaMensagens').append('<div class=\'msg\'><span>'+ index + " - " + value.mensagem+' - '+value.data+'</span></div>');
+			jQuery('.caixaMensagens').append('<div class=\'msg\'><span class=\'msgbody\'>'+ value.mensagem+' <img src= \'img/cal.png\'/> <span class=\'calendar\' >'+value.data+'</span></span></div>');
 		});
 	});
 function sendMensagem(){
