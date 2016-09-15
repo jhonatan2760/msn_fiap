@@ -98,7 +98,7 @@
     width: 100%;
     height: 100px;
     border-radius: 10px 10px 10px;
-    margin-top: 29%;
+    margin-top: 19%;
 }
 
 #salvar span{
@@ -122,6 +122,12 @@ input[name=usuario]{
 
 input[name=nick]{
 	background-image: url('../img/nick.png');
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+input[type=password]{
+	background-image: url('../img/padlock.png');
     background-position: right;
     background-repeat: no-repeat;
 }

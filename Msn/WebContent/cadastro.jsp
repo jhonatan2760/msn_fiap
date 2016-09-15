@@ -22,6 +22,13 @@
 	<div>
 		<input class='redondo' type='text' name='nick' placeholder='Apelido'/>
 	</div>
+	<div>
+		<input class='redondo' type='password' name='senha' placeholder='Senha'/>
+	</div>
+	
+	<div id='avatar'>
+		
+	</div>
 	
 	<div id='salvar'>
 		<div>
