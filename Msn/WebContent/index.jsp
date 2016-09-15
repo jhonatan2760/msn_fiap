@@ -11,6 +11,12 @@
 </head>
 <body>
 	<div class='mainContainer'>
+		<div class='usuarios'>
+			<div class='topUsers'>
+				<img src='img/ende.png' />
+				<span id='users'> Usuários:</span>
+			</div>
+		</div>
 		<div class='caixaMensagens'>
 			
 		</div>

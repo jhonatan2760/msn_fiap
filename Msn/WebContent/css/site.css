@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
     background-position: right;
     background-position-y: 241px;
+    width : 75%;
 }
 
 .btnEnviar{
@@ -48,4 +49,79 @@
 	background: rgb(164, 217, 234);
     padding: 7px;
     border-radius: 8px;
+}
+
+.usuarios{
+	border: solid black 2px;
+    width: 24%;
+    height: 492px;
+    float: right;
+    border-radius: 2%;
+}
+
+.topUsers{
+	background : cadetblue;
+	color: white;
+    /* margin: -5px; */
+    font-family: monospace;
+}
+
+#logo{
+	background: cornflowerblue;
+    box-shadow: black 13px 11px 14px;
+}
+
+@font-face{
+	font-family : 'padraoTitulo';
+	src : url('../fonts/ostrich-sans-black.woff') format('woff');
+}
+
+#legend{
+	font-family :'padraoTitulo';
+	color : white;
+	font-size : 100px;
+}
+
+#full{	
+	background: gold;
+}
+
+.redondo{
+	border-radius: 10px;
+    padding: 13px;
+    width: 27%;
+    margin: 40px;
+}
+
+#salvar{
+	background: green;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px 10px 10px;
+    margin-top: 29%;
+}
+
+#salvar span{
+	color : white;
+	margin : 40px;
+	font-size: 49px;
+    font-family: padraoTitulo;
+}
+
+#salvar div{
+	padding: 2%;
+	text-align: center;
+	cursor : pointer;
+}
+
+input[name=usuario]{
+	background-image: url('../img/user.png');
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+input[name=nick]{
+	background-image: url('../img/nick.png');
+    background-position: right;
+    background-repeat: no-repeat;
 }
