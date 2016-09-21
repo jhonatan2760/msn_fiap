@@ -31,9 +31,7 @@ public class Send extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Gson g = new Gson();
-		
 		response.getWriter().append(g.toJson(new Mensagem().getMensagens()));
 	}
 

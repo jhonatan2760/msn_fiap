@@ -28,7 +28,7 @@
 }
 
 .msg{
-	    background: rgb(201, 255, 195);
+	background: rgb(201, 255, 195);
     width: 25%;
     border-radius: 5%;
     padding: 10px;
@@ -89,7 +89,7 @@
 .redondo{
 	border-radius: 10px;
     padding: 13px;
-    width: 27%;
+   	width: 90%;
     margin: 40px;
 }
 
@@ -98,7 +98,11 @@
     width: 100%;
     height: 100px;
     border-radius: 10px 10px 10px;
-    margin-top: 19%;
+    margin-top: 10%;
+}
+
+#salvar:hover{
+	background : cornflowerblue;
 }
 
 #salvar span{
@@ -130,4 +134,42 @@ input[type=password]{
 	background-image: url('../img/padlock.png');
     background-position: right;
     background-repeat: no-repeat;
+}
+
+#avatar{
+	background: #348AF7;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top : 20px;
+    padding: 5px;
+    text-align : center;
+}
+
+.avatarImg{
+	background: #F0FFEF;
+    border-radius: 25px;
+    padding: 5px;
+    cursor : pointer;
+}
+
+.avatarImg:hover{
+/* 	zoom : 1.2; */
+	background : crimson;
+	border-radius : 0px 0px 0px 20px;
+}
+
+.avatarImgSelecionado{
+	background : crimson;
+	border-radius : 0px 0px 0px 20px;
+}
+.fontPattern{
+	font-family: 'padraoTitulo';
+    color: white;
+    font-size: 40px;
+}
+
+.cornColor{
+	background: cornflowerblue;
+    box-shadow: black 13px 11px 14px;
+    padding: 5px;
 }

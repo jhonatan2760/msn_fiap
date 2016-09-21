@@ -1,5 +1,6 @@
 package br.com.jhonatan2760.servelet;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,10 @@ public class Avatar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+//		File arq = new File("C:/Users/rm76856/git/msn_fiap/Msn/src/br/com/jhonatan2760/img/avatars");
+//		File [] arquivos = arq.listFiles();
+//		System.out.println(" é um diretório : "+arq.isDirectory());
+//		System.out.println("é um arquivo: "+arq.isFile());
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -34,7 +38,6 @@ public class Avatar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

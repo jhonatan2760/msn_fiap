@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.jhonatan2760.DAO.UsuarioDAO;
+import br.com.jhonatan2760.model.Usuario;
+
 /**
  * Servlet implementation class Cadastro
  */
@@ -26,9 +29,28 @@ public class Cadastro extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
-	
+		String usuario = request.getParameter("usuario");
+		String nick = request.getParameter("nick");
+		String password = request.getParameter("senha");
+		String avatar = request.getParameter("avatar");
+		System.out.println(" Usuário recebido : "+usuario+" "+nick+" "+password);
+		Usuario user = new Usuario();
+		user.setNick(nick);
+		user.setUsuario(usuario);
+		user.setSenha(password);
+		user.setAvatar(avatar);
+		UsuarioDAO dao = new UsuarioDAO(user);
+		
+		try{
+			dao.salvar();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -16,6 +16,7 @@
 			<span id='legend'>Chatrope</span>
 		</div>
 	</div>
+<form id='cad' name='cad' action='cadastro.do' method='post' >
 	<div>
 		<input class='redondo' type='text' name='usuario' placeholder='login'/>
 	</div>
@@ -25,15 +26,52 @@
 	<div>
 		<input class='redondo' type='password' name='senha' placeholder='Senha'/>
 	</div>
-	
-	<div id='avatar'>
-		
+
+	<div class='cornColor' >
+		<span class='fontPattern'>Selecione seu avatar:</span>
 	</div>
-	
+	<input type='hidden' name='avatar' value='' />
+</form>	
+	<div id='avatar'>
+		<img class='avatarImg' src='img/avatar/Artie Ziff.png' />
+		<img class='avatarImg' src='img/avatar/Bart.png' />
+		<img class='avatarImg' src='img/avatar/Bartina.png' />
+		<img class='avatarImg' src='img/avatar/Bartman.png' />
+		<img class='avatarImg' src='img/avatar/Barto Picasso.png' />
+		<img class='avatarImg' src='img/avatar/Blinky.png' />
+		<img class='avatarImg' src='img/avatar/Bob Hope.png' />
+		<img class='avatarImg' src='img/avatar/Caveman.png' />
+		<img class='avatarImg' src='img/avatar/Chef Bart.png' />
+		<img class='avatarImg' src='img/avatar/Cool Bart.png' />
+		<img class='avatarImg' src='img/avatar/Duff beer.png' />
+		<img class='avatarImg' src='img/avatar/French Bart.png' />
+		<img class='avatarImg' src='img/avatar/Herb Powell.png' />
+		<img class='avatarImg' src='img/avatar/Homer.png' />
+		<img class='avatarImg' src='img/avatar/Herman.png' />
+		<img class='avatarImg' src='img/avatar/Lisa.png' />
+		<img class='avatarImg' src='img/avatar/Marge.png' />
+		<img class='avatarImg' src='img/avatar/Ms Melan.png' />
+		<img class='avatarImg' src='img/avatar/Nuclear plant.png' />
+		<img class='avatarImg' src='img/avatar/Snake.png' />
+		<img class='avatarImg' src='img/avatar/Space Mutant.png' />
+	</div>
+
 	<div id='salvar'>
 		<div>
 			<span>Cadastrar</span>
 		</div>
 	</div>
+	
+	<script type='text/javascript'>
+		jQuery('#salvar').click(function(event){
+// 			alert('Clicou!');
+			jQuery('#cad').submit();
+		});
+		
+		jQuery('#avatar img').click(function(event){
+			jQuery(this).toggleClass('avatarImgSelecionado');
+			jQuery('input[name=avatar]').val(jQuery(this).attr('src'));
+		});
+	</script>
 </body>
 </html>
