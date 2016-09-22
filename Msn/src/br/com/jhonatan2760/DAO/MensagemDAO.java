@@ -7,8 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mysql.jdbc.Connection;
+
+import br.com.jhonatan2760.Exception.UserAutenthication;
 import br.com.jhonatan2760.conect.Conect;
 import br.com.jhonatan2760.model.Mensagem;
+import br.com.jhonatan2760.model.Usuario;
 
 public class MensagemDAO {
 
@@ -22,7 +26,7 @@ public class MensagemDAO {
 	public void enviarMensagem(){
 		Conect c = new Conect();
 		try {
-			c.retrieveConection().createStatement().execute(" INSERT into mensagem values("+ (Math.random() * 9999) + 1 +",'"+m.getNick()+"','"+m.getMensagem()+"', '"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"')");
+			c.retrieveConection().createStatement().execute(" INSERT into mensagem values("+ (Math.random() * 9999) + 1 +",'"+m.getNick()+"','"+m.getMensagem()+"', '"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"', "+m.getUser().getId()+")");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,20 +36,32 @@ public class MensagemDAO {
 	public List<Mensagem> getMensagens(){
 		List<Mensagem> m = null;
 		Mensagem mm;
-		
+		Connection cs = new Conect().retrieveConection();
 		try {
-			ResultSet rs = new Conect().retrieveConection().createStatement().executeQuery(" SELECT * FROM mensagem ORDER BY data");
+			ResultSet rs = cs.createStatement().executeQuery(" SELECT * FROM mensagem ORDER BY data");
 			m = new ArrayList<>();
+			UsuarioDAO us = null;
 			while(rs.next()){
 				mm = new Mensagem();
 				mm.setIdMensagem(rs.getInt(1));
 				mm.setNick(rs.getString(2));
 				mm.setMensagem(rs.getString(3));
 				mm.setData(rs.getDate(4));
+				Usuario s = new Usuario();
+				us = new UsuarioDAO(s);
+				mm.setUser(us.getById(rs.getLong(5)));
 				m.add(mm);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (UserAutenthication e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				cs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return m;
 	}

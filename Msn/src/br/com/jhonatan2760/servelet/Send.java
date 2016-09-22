@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 
 import br.com.jhonatan2760.DAO.MensagemDAO;
 import br.com.jhonatan2760.model.Mensagem;
+import br.com.jhonatan2760.model.Usuario;
 
 /**
  * Servlet implementation class Send
@@ -45,8 +46,9 @@ public class Send extends HttpServlet {
 		m.setIdMensagem(0);
 		m.setMensagem(request.getParameter("mensagem"));
 		m.setNick(request.getParameter("nick"));
+		Usuario uss = (Usuario) request.getSession().getAttribute("usuario");
+		m.setUser(uss);
 		new MensagemDAO(m).enviarMensagem();
-		System.out.println(request.getParameter("Jhonatan"));
 	}
 
 }

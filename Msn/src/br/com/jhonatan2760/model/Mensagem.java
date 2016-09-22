@@ -15,6 +15,7 @@ public class Mensagem extends MensagemDAO {
 	private String nick;
 	private String mensagem;
 	private Date data;
+	private Usuario user;
 	
 	public int getIdMensagem() {
 		return idMensagem;
@@ -43,5 +44,13 @@ public class Mensagem extends MensagemDAO {
 	
 	public List<Mensagem> getMensages(){
 		return this.getMensagens();
+	}
+	
+	public Usuario getUser() {
+		return user;
+	}
+	
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 }
