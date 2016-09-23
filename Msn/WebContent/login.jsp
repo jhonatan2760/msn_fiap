@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Chatropaulinho</title>
+<title>Login CHATROPE</title>
 <script type='text/javascript' src='js/ckeditor/ckeditor.js' ></script>
 <script type='text/javascript' src='js/jquery-3.1.0.min.js'></script>
 <link href='css/site.css' rel='stylesheet'></link>
@@ -27,8 +27,11 @@
 </form>
 
 <div id='salvar'>
-	<div>
+	<div id='save'>
 		<span>Logar</span>
+	</div>
+	<div id='cadastro' >
+		<span>Cadastrar-se</span>
 	</div>
 </div>
 </body>
@@ -38,10 +41,14 @@
 	%>
 		alert('Login/Senha incorreto(s)');
 	<%}%>
-jQuery('#salvar').click(function(event){
-
+jQuery('#save').click(function(event){
+	event.preventDefault();
 	jQuery('#cad').submit();
 
+});
+
+jQuery('#cadastro').click(function(event){
+	window.location.href = 'cadastro.jsp';
 });
 
 </script>

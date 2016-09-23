@@ -58,6 +58,7 @@
     height: 492px;
     float: right;
     border-radius: 2%;
+    background : white;
 }
 
 .topUsers{
@@ -173,4 +174,18 @@ input[type=password]{
 	background: cornflowerblue;
     box-shadow: black 13px 11px 14px;
     padding: 5px;
+}
+
+#membership{
+	cursor : pointer;
+	color : white;
+}
+
+.user{
+	background: darkorange;
+    border-radius: 85px;
+    width: 71%;
+    margin-left: 12%;
+    margin-top: 4%;
+    padding : 10px;
 }

@@ -25,11 +25,18 @@ public class MensagemDAO {
 	
 	public void enviarMensagem(){
 		Conect c = new Conect();
+		Connection cc = c.retrieveConection();
+		
 		try {
-			c.retrieveConection().createStatement().execute(" INSERT into mensagem values("+ (Math.random() * 9999) + 1 +",'"+m.getNick()+"','"+m.getMensagem()+"', '"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"', "+m.getUser().getId()+")");
+			cc.createStatement().execute(" INSERT into mensagem values("+ (Math.random() * 9999) + 1 +",'"+m.getNick()+"','"+m.getMensagem()+"', '"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"', "+m.getUser().getId()+")");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			try {
+				cc.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

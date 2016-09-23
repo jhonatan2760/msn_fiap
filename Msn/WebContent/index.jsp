@@ -46,7 +46,7 @@
 <%-- 			alert('<%= user.getNick() %>'); --%>
 	<%
 		}catch(Exception ex){
-			ex.printStackTrace();
+// 			ex.printStackTrace();
 		}
 	%>
 	jQuery(document).ready(function(event){
@@ -59,6 +59,14 @@
 			jQuery('.caixaMensagens').append("<div class='msg'><p><b>"+value.user.nick+"</b></p><span class='msgbody'>"+ value.mensagem+"<img src='"+ value.user.avatar +"' /> <span class='calendar' >"+value.data+"</span></span></div>");
 		});
 	});
+	
+	jQuery.getJSON('UserHandler', {}, function(data){
+		console.log(data);
+		jQuery.each(data,function(index, value){
+			jQuery('.usuarios').append("<div class='user'><img class='avatar' src='"+value.avatar+"' /><b>"+value.usuario+"</b></div>");
+		});
+	});
+	
 function sendMensagem(){
 	jQuery.ajax({
 		url : 'Send',

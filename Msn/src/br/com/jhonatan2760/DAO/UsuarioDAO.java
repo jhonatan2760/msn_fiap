@@ -3,6 +3,8 @@ package br.com.jhonatan2760.DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.jhonatan2760.Exception.UserAutenthication;
 import br.com.jhonatan2760.conect.Conect;
@@ -25,14 +27,21 @@ public class UsuarioDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public Usuario getById(Long id) throws UserAutenthication{
-	Conect c = new Conect();
+		Conect c = new Conect();
+		Connection cc = c.retrieveConection();
 		
 		try {
-			ResultSet rs = c.retrieveConection().createStatement().executeQuery(" SELECT idUsuario,usuario,nick,avatar FROM User where idUsuario = "+id+" ");
+			ResultSet rs = cc.createStatement().executeQuery(" SELECT idUsuario,usuario,nick,avatar FROM User where idUsuario = "+id+" ");
 			Usuario receiver = new Usuario();
 			
 			if(rs.next()){
@@ -48,6 +57,12 @@ public class UsuarioDAO {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				cc.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return null;
@@ -74,6 +89,38 @@ public class UsuarioDAO {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				cc.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
+	public List<Usuario> getUsuarios(){
+		System.out.println("Carregando usuários");
+		Conect c = new Conect();
+		Connection cc = c.retrieveConection();
+		
+		try{
+			ResultSet rs = cc.createStatement().executeQuery(" SELECT idUsuario,usuario,nick,avatar from User ");
+			Usuario receiver;
+			List<Usuario> us = new ArrayList<>();
+			while(rs.next()){
+				receiver = new Usuario();
+				receiver.setId(rs.getLong(1));
+				receiver.setUsuario(rs.getString(2));
+				receiver.setNick(rs.getString(3));
+				receiver.setAvatar(rs.getString(4));
+				us.add(receiver);
+			}
+			
+			return us;
+		}catch(Exception ex){
+			ex.printStackTrace();
 		}finally{
 			try {
 				cc.close();
