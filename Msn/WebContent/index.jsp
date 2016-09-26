@@ -22,7 +22,7 @@
 		<div class='usuarios'>
 			<div class='topUsers'>
 				<img src='img/ende.png' />
-				<span id='users'> Usuários:</span>
+				<span id='users'> Usuários:</span> <img class='logout' src='img/logout-icon.png' />
 			</div>
 		</div>
 		<div class='caixaMensagens'>
@@ -67,6 +67,10 @@
 		});
 	});
 	
+	jQuery('.logout').click(function(event){
+		logout();
+	});
+	
 function sendMensagem(){
 	jQuery.ajax({
 		url : 'Send',
@@ -78,6 +82,19 @@ function sendMensagem(){
 		}
 	});
 }	
+
+function logout(){
+	console.log('in');
+	jQuery.ajax({
+		url : 'Logout',
+		dataType : 'text/html',
+		method : 'POST',
+		data : {logout : true},
+		succes : function(data){
+			
+		}
+	});
+}
 
 jQuery('#sender').click(function(event){
 

@@ -31,7 +31,14 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Serveds at: ").append(request.getContextPath());
+//		response.getWriter().append("Serveds at: ").append(request.getContextPath());
+		if(request.getParameter("logout") != null){
+			request.getSession().removeAttribute("login");
+			request.removeAttribute("logado");
+			request.getSession().removeAttribute("usuario");
+			request.getSession().invalidate();
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 	/**
