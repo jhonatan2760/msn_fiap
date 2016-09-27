@@ -2,13 +2,13 @@
 .caixaMensagens{
 	height: 500px;
     background: whitesmoke;
-    border-radius: 4%;
+    border-radius: 1%;
     box-shadow: black 10px 10px 30px -5px;
     margin-bottom: 15px;
 }
 
 .caixaMensagens{
-	overflow-x : scroll;
+	overflow-x : hidden;
     background-image: url('../img/img.png');
     background-repeat: no-repeat;
     background-position: right;
@@ -18,14 +18,20 @@
 
 .btnEnviar{
 	background: green;
-    width: 10%;
-    height: 20px;
+    width: 99%;
+    height: 61px;
     padding: 10px;
     border-radius: 10px;
     color: white;
     cursor: pointer;
     float: right;
-    font-family: monospace;
+    font-family: 'padraoTitulo';
+    margin-top: 8px;
+    text-align : center;
+}
+
+.btnEnviar span{
+	font-size: 70px;
 }
 
 .msg{
@@ -190,7 +196,7 @@ input[type=password]{
     padding : 10px;
 }
 
-<style type="text/css">
+
 ::-webkit-scrollbar {
   width: 13px;
   height: 13px;
@@ -230,4 +236,18 @@ input[type=password]{
 	float : right;
 	margin-top : 2px;
 }
-</style>
+
+.nickName{
+	font-family: 'padraoTitulo';
+    color: white;
+    font-size: 25px;
+    margin-left : 2%;
+}
+
+.hidden{
+	display : none;
+}
+
+p{
+	font-family: monospace;
+}

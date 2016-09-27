@@ -26,7 +26,6 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -39,7 +38,8 @@ public class Logout extends HttpServlet {
 			request.removeAttribute("logado");
 			request.getSession().removeAttribute("usuario");
 			request.getSession().invalidate();
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			System.out.println("Saindo.. Até logo!");
 		}
 	}
 

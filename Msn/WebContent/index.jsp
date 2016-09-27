@@ -11,6 +11,7 @@
 		if(request.getSession().getAttribute("login") == null){
 	%>
 			window.location.href = 'login.jsp';
+			return false;
 	<%}%>
 	</script>
 	<script type='text/javascript' src='js/ckeditor/ckeditor.js' ></script>
@@ -49,22 +50,37 @@
 // 			ex.printStackTrace();
 		}
 	%>
+	
+	
 	jQuery(document).ready(function(event){
 		var editor = CKEDITOR.replace('texto');
+		getMessages();
+		startLoadMessage();
 	});
 	
+function getMessages(){
 	jQuery.getJSON('Send', {} , function(data){
+		console.log('Consulta de mensagens');
 		jQuery.each(data, function(index, value){
-			console.log(value.user);
 			jQuery('.caixaMensagens').append("<div class='msg'><p><b>"+value.user.nick+"</b></p><span class='msgbody'>"+ value.mensagem+"<img src='"+ value.user.avatar +"' /> <span class='calendar' >"+value.data+"</span></span></div>");
 		});
+		rolarTela();
 	});
+}
+	
+	function rolarTela(){
+		jQuery('.caixaMensagens').animate({ scrollTop : jQuery('.caixaMensagens').prop('scrollHeight')}, 600);
+	}
 	
 	jQuery.getJSON('UserHandler', {}, function(data){
 		console.log(data);
-		jQuery.each(data,function(index, value){
-			jQuery('.usuarios').append("<div class='user'><img class='avatar' src='"+value.avatar+"' /><b>"+value.usuario+"</b></div>");
+		
+		
+		jQuery.each(data, function(index, value){
+			jQuery('.usuarios').append("<div class='user hidden'><img class='avatar' src='"+value.avatar+"' /><b class='nickName' >"+value.usuario+"</b></div>");
 		});
+		
+		jQuery('.user').fadeIn(600);
 	});
 	
 	jQuery('.logout').click(function(event){
@@ -94,12 +110,26 @@ function logout(){
 			
 		}
 	});
+	
+	window.location.href = 'login.jsp';
 }
 
+function startLoadMessage(){
+
+setInterval(function(){
+console.log('update');
+	getMessages();
+},300000);
+
+}
 jQuery('#sender').click(function(event){
-
 	sendMensagem();
-
+	hiddeMessages();
+	getMessages();
 });
+
+function hiddeMessages(){
+	jQuery('.caixaMensagens .msg').fadeOut(300).remove();
+}
 </script>
 </html>
