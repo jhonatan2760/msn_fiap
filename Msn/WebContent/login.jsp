@@ -41,6 +41,7 @@
 	%>
 		alert('Login/Senha incorreto(s)');
 	<%}%>
+	
 jQuery('#save').click(function(event){
 	event.preventDefault();
 	jQuery('#cad').submit();

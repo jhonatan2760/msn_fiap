@@ -12,11 +12,15 @@
 	%>
 			window.location.href = 'login.jsp';
 			return false;
-	<%}%>
+	<%}else{%>
 	</script>
 	<script type='text/javascript' src='js/ckeditor/ckeditor.js' ></script>
 	<script type='text/javascript' src='js/jquery-3.1.0.min.js'></script>
+	<script type='text/javascript' src='js/jquery-ui.min.js'></script>
 	<link href='css/site.css' rel='stylesheet'></link>
+	<link href='css/jquery-ui.min.css' rel='stylesheet'></link>
+	<link href='css/jquery-ui.structure.css' rel='stylesheet'></link>
+	<link href='css/jquery-ui.theme.css' rel='stylesheet'></link>
 </head>
 <body id='full'>
 	<div class='mainContainer'>
@@ -65,6 +69,7 @@ function getMessages(){
 			jQuery('.caixaMensagens').append("<div class='msg'><p><b>"+value.user.nick+"</b></p><span class='msgbody'>"+ value.mensagem+"<img src='"+ value.user.avatar +"' /> <span class='calendar' >"+value.data+"</span></span></div>");
 		});
 		rolarTela();
+		setListener();
 	});
 }
 	
@@ -126,10 +131,24 @@ jQuery('#sender').click(function(event){
 	sendMensagem();
 	hiddeMessages();
 	getMessages();
+	showMessages();
 });
+
+function showMessages(){
+	jQuery('.user').fadeIn(600);
+}
 
 function hiddeMessages(){
 	jQuery('.caixaMensagens .msg').fadeOut(300).remove();
 }
+
+function setListener(){
+	jQuery('p').on('click', function(event){
+
+		jQuery(this).parent().dialog();
+	
+	});
+}
 </script>
+<%}	 %>
 </html>
