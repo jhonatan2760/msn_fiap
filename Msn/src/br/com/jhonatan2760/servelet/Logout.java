@@ -34,9 +34,6 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("logout") != null){
-			request.getSession().removeAttribute("login");
-			request.removeAttribute("logado");
-			request.getSession().removeAttribute("usuario");
 			request.getSession().invalidate();
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 			System.out.println("Saindo.. Até logo!");

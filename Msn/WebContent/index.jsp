@@ -6,14 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CHATROPE</title>
-	<script type='text/javascript'>
 	<%
 		if(request.getSession().getAttribute("login") == null){
 	%>
+		<script type='text/javascript'>
+			console.log('entrou deslogado!');
 			window.location.href = 'login.jsp';
-			return false;
-	<%}else{%>
-	</script>
+		</script>
+	<%
+	}else{%>
 	<script type='text/javascript' src='js/ckeditor/ckeditor.js' ></script>
 	<script type='text/javascript' src='js/jquery-3.1.0.min.js'></script>
 	<script type='text/javascript' src='js/jquery-ui.min.js'></script>
@@ -41,8 +42,18 @@
 		</div>
 	</div>
 </body>
-<script type='text/javascript'>	
+<div class="hidden" id="bemvindo">
+	<span>Seja bem vindo!</span>
+</div>
 
+<div class="hidden" id="enviada">
+	<p>Mensagem enviada!</p>
+</div>
+
+<div class='hidden' id="zoom">
+
+</div>
+<script type='text/javascript'>	
 	<%
 		try{		
 			Usuario user = (Usuario) request.getAttribute("logado");
@@ -60,12 +71,15 @@
 		var editor = CKEDITOR.replace('texto');
 		getMessages();
 		startLoadMessage();
+// 		jQuery('#bemvindo').dialog();
 	});
 	
 function getMessages(){
 	jQuery.getJSON('Send', {} , function(data){
 		console.log('Consulta de mensagens');
 		jQuery.each(data, function(index, value){
+			console.log(value.mensagem);
+// 			jQuery('.caixaMensagens').html('');
 			jQuery('.caixaMensagens').append("<div class='msg'><p><b>"+value.user.nick+"</b></p><span class='msgbody'>"+ value.mensagem+"<img src='"+ value.user.avatar +"' /> <span class='calendar' >"+value.data+"</span></span></div>");
 		});
 		rolarTela();
@@ -102,6 +116,8 @@ function sendMensagem(){
 			alert(data);
 		}
 	});
+	
+	jQuery('#enviada').dialog();
 }	
 
 function logout(){
@@ -124,13 +140,17 @@ function startLoadMessage(){
 setInterval(function(){
 console.log('update');
 	getMessages();
-},300000);
+},1000);
 
 }
 jQuery('#sender').click(function(event){
 	sendMensagem();
 	hiddeMessages();
-	getMessages();
+	
+	setTimeout(function(){
+		getMessages();
+	},1000);
+	
 	showMessages();
 });
 
@@ -144,7 +164,6 @@ function hiddeMessages(){
 
 function setListener(){
 	jQuery('p').on('click', function(event){
-
 		jQuery(this).parent().dialog();
 	
 	});
